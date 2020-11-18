@@ -8,9 +8,10 @@ import random
 import smtplib
 import urllib
 import urllib.request
-import numpy as np
-# from subprocess import call
+# import numpy as np
+from subprocess import call
 import socket
+# import cv2
 
 
 engine=pyttsx3.init('sapi5')
@@ -82,7 +83,7 @@ def email(to1,content1):
     speak("email sent")
 
 def findReceiver(name):
-    contacts = {'leroy':'dsilva.leroy10','mama':'lidwin1971','castellino':'sharrel.castelino'}
+    contacts = {'silva':'dsilva.leroy10','mama':'lidwin1971','castellino':'sharrel.castelino'}
     try:
         receiverGmail = contacts[name]
         return receiverGmail
@@ -133,6 +134,7 @@ if __name__ == "__main__":
         elif 'email' in query:
             try:
                 speak("to whom")
+                query=take().lower()
                 receiver = query.split(" ")[len(query.split(" "))-1]
                 to = findReceiver(receiver)
                 to="{}@gmail.com".format(to)
